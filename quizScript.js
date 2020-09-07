@@ -74,7 +74,7 @@ function setTimer() {
         countDownNumbDisp.textContent = secondsLeft
     if (secondsLeft < 0) {
         clearInterval(timerInterval);
-        countDownNumbDisp.textContent = "NO TIME";
+        countDownNumbDisp.textContent = 0;
         document.getElementById("disappearDiv").remove();
         document.getElementById("lineId").remove();
         answerDisp.textContent = "You Ran Out of Time";
@@ -151,7 +151,7 @@ posiAnswer2.addEventListener('click', function() {
             answerDisp.textContent = ("QUIZ COMPLETE, CHECK HIGH SCORES");
             document.getElementById("disappearDiv").remove();
             document.getElementById("lineId").remove();
-            countDownNumbDisp.textContent = (" "); // NEED TO SHUT OFF TIMER
+            secondsLeft = 0;
             }
 
     else {secondsLeft = secondsLeft -10}
