@@ -18,7 +18,7 @@ var currentPage = 0
 var gameArray = [
 
     {   page: 1,
-        question: "How much do you hate coding?",
+        question: "This is the content for the first page!!",
         answer1: "a lot but wrong",
         answer2: "very much but very wrong",
         answer3: "what is wrong anyway?",
@@ -26,27 +26,27 @@ var gameArray = [
     },
     {
         page: 2,
-        question: "How much do you hate coding?",
-        answer1: "answer wrong 1",
-        answer2: "answer wrong 2",
-        answer3: "answer wrong 3",
-        rightAnswer2: "answer right 1"
+        question: "This is the content for the second page!!",
+        answer1: "answer wrong 1 -2nd page",
+        answer2: "answer wrong 2 - 2nd page",
+        answer3: "answer wrong 3 - 2nd page",
+        rightAnswer2: "answer right 1 - 2nd page"
     },
     {
         page: 3,
-        question: "How much do you hate coding?",
-        answer1: "answer wrong 1",
-        answer2: "answer wrong 2",
-        answer3: "answer wrong 3",
-        rightAnswer3: "answer right 1"
+        question: "This is the content for the third page!",
+        answer1: "answer wrong 1 - 3rd page",
+        answer2: "answer wrong 2 - 3rd page",
+        answer3: "answer wrong 3 - 3rd page",
+        rightAnswer3: "answer right 1 - 3rd"
     },
     {
         page: 4,
-        question: "How much do you hate coding?",
-        answer1: "answer wrong 1",
-        answer2: "answer wrong 2",
-        answer3: "answer wrong 3",
-        rightAnswer4: "answer right 1"
+        question: "Are you a coder?",
+        answer1: "answer wrong 1 - 4th",
+        answer2: "answer wrong 2 - 4th",
+        answer3: "answer wrong 3 - 4th ",
+        rightAnswer4: "answer right 1 - 4th"
     }
 ]
 // TIMER SETTING
@@ -55,7 +55,7 @@ var secondsLeft = 75;
 var wrongAnswerLoss = secondsLeft - 15;
 //***************************************** */
 timerButton.addEventListener("click", function() {
-    pageChange(); //hides appropriate IDs & unhides initial content
+    pageChange1(); //hides appropriate IDs & unhides initial content
                   // initializes with original question content & answer
     setTimer();
 
@@ -72,7 +72,8 @@ function setTimer() {
     } ,1000) 
 }  
 
-function pageChange() {
+//Initial Quiz Starting Page
+function pageChange1() {
     timerButton.classList.add("hideMe");
     subHeadDisp.classList.add("hideMe");
     posiAnswer1.classList.remove("hideMe");
@@ -88,25 +89,64 @@ function pageChange() {
     posiAnswer4.textContent = gameArray[0]["rightAnswer1"];
 }
 
+
+function pageChange2() {
+    mainHeadDisp.textContent = gameArray[1]["question"];
+    posiAnswer1.textContent = gameArray[1]["answer1"];
+    posiAnswer2.textContent = gameArray[1]["answer2"];
+    posiAnswer3.textContent = gameArray[1]["rightAnswer2"];
+    posiAnswer4.textContent = gameArray[1]["answer3"];
+}
+
+function pageChange3() {
+    mainHeadDisp.textContent = gameArray[2]["question"];
+    posiAnswer1.textContent = gameArray[2]["answer1"];
+    posiAnswer2.textContent = gameArray[2]["rightAnswer3"];
+    posiAnswer3.textContent = gameArray[2]["answer3"];
+    posiAnswer4.textContent = gameArray[2]["answer2"];
+}
+
+function pageChange4() {
+    mainHeadDisp.textContent = gameArray[3]["question"];
+    posiAnswer1.textContent = gameArray[3]["answer1"];
+    posiAnswer2.textContent = gameArray[3]["rightAnswer4"];
+    posiAnswer3.textContent = gameArray[3]["answer3"];
+    posiAnswer4.textContent = gameArray[3]["answer2"];
+}
+
+
+
 posiAnswer1.addEventListener('click', function() {
-    if (posiAnswer1 = gameArray[0]["rightAnswer1"]) 
-    { secondsLeft-- //this subtracts extra seconds when you click wrong
-      console.log("did this happen.") }
+    if (posiAnswer1 !== gameArray[0]["rightAnswer1"]) 
+    {   secondsLeft-- //this subtracts extra seconds when you click wrong
+        console.log("incorrect page 1 log"); 
+        pageChange2();   }
 }, )
 
 posiAnswer2.addEventListener('click', function() {
-    if (posiAnswer2 !== gameArray[0]["rightAnswer1"]) 
-    { secondsLeft-- //this subtracts extra seconds when you click wrong
-      console.log("did this happen.") }
-}, )
+    if (mainHeadDisp.textContent == gameArray[2]["question"] &&
+        posiAnswer2.textContent == gameArray[2]["rightAnswer3"])  
+    {answerDisp.textContent = "GREAT CODER!!";
+    console.log("correct page 3 log");
+    pageChange4(); }
+    else if (mainHeadDisp.textContent == gameArray[3]["question"] &&
+            posiAnswer2.textContent == gameArray[3]["rightAnswer4"]){
+            answerDisp.textContent = ("QUIZ COMPLETE, CHECK HIGH SCORES")}
+    }, )
 
 posiAnswer3.addEventListener('click', function() {
-    if (posiAnswer3.textContent !== gameArray[0]["rightAnswer1"]);
-    { secondsLeft-- //this subtracts extra seconds when you click wrong
-      console.log("did this happen.") }
+    if (mainHeadDisp.textContent == gameArray[1]["question"] &&
+        posiAnswer3.textContent == gameArray[1]["rightAnswer2"]) 
+    {answerDisp.textContent = "GOOD JOB CODER!!";
+    console.log("correct page 2 log");
+    pageChange3(); }
+    
 }, )
 
 posiAnswer4.addEventListener('click', function() {
-    if (posiAnswer4.textContent !== gameArray[0]["rightAnswer1"]) 
-    {console.log("did this happen.") }
+    if (mainHeadDisp.textContent == gameArray[0]["question"] &&
+        posiAnswer4.textContent == gameArray[0]["rightAnswer1"]) {
+    answerDisp.textContent = "GOOD CODER!!!";
+    {console.log("correct page 1  log"); }
+    pageChange2(); }
 }, )
