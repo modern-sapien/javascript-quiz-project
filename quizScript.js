@@ -195,5 +195,12 @@ posiAnswer4.addEventListener('click', function() {
 //SUBMISSION
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
-        event.preventDefault()
+        // event.preventDefault()
+        console.log("this could create a value");
+        submitScore();
     });
+
+function submitScore() {
+    window.localStorage.name = document.getElementById(initialText).value;
+
+}
