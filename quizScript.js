@@ -14,15 +14,26 @@ var lineDisp = document.querySelector("#lineId");
 var answerDisp = document.querySelector("#answerDisplay")
 
 
-var secondsLeft = 75;
+var secondsLeft = 5;
 
 timerButton.addEventListener("click", function() {
     setTimer();
+     timerButton.classList.add("hideMe");
+     posiAnswer1.classList.remove("hideMe");
+     posiAnswer2.classList.remove("hideMe");
+     posiAnswer3.classList.remove("hideMe");
+     posiAnswer4.classList.remove("hideMe");
+     lineDisp.classList.remove("hideMe");
+     answerDisp.classList.remove("hideMe");
 }, )
 
 function setTimer() {
     var timerInterval = setInterval(function() {
         secondsLeft--
         countDownNumbDisp.textContent = secondsLeft
+    if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+        countDownNumbDisp.textContent = "NO TIME";
+    }
     } ,1000) 
 }  
