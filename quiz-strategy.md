@@ -2,7 +2,7 @@
 This is a document for strategizing how I will accomplish creating the Javascript Quiz Assignment
 
 
-Page One - Create a landing page
+Step One - Create a landing page
    
     top nav bar
         top left - link to high scores
@@ -33,3 +33,24 @@ Page One - Create a landing page
     hidden line
     answer - content
 
+Step 2 Target
+## TARGETS
+    id="timer" - countdowntimer
+    id="timeStart" - button that clicks & begins quiz
+    id="subHeading" - displays content, but disappears on quiz begin
+    id="headingMan" -changes content to question content
+    id="answer1" -
+    id="answer2" -
+    id="answer3" -
+    id="answer4" -
+## 1. Click to call function
+id= "timeStart" is what will initialize the timer 
+
+## Upon timeStart click // hideMe
+id= "timeStart" set attribute "class", "hideMe" 
+id= "subHeadingMain" set attribute "class" "hideMe"
+## Upon timeStart click // unhideMe
+id = "timer" begin time loop countdown from 75 
+
+id= "headingMain" is where questions will be displayed
+id = "answer1", "answer2", "answer3", "answer4" // needs class  at start
