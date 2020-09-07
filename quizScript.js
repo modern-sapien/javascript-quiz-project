@@ -14,10 +14,15 @@ var posiAnswer3 = document.querySelector("#answer3");
 var posiAnswer4 = document.querySelector("#answer4");
 
 var lineDisp = document.querySelector("#lineId");
-var answerDisp = document.querySelector("#answerDisplay")
+var answerDisp = document.querySelector("#answerDisplay");
 
-var currentPage = 0
+var userScore = document.querySelector("#scoreTracker");
 
+var currentPage = 0;
+var trackedScore = 0;
+
+// Object array that holds question and answer content
+//********************************************************
 var gameArray = [
     {   page: 1,
         question: "This is the content for the first page!!",
@@ -70,13 +75,21 @@ function setTimer() {
     if (secondsLeft < 0) {
         clearInterval(timerInterval);
         countDownNumbDisp.textContent = "NO TIME";
-        document.getElementById("disappearDiv").remove()
-        document.getElementById("lineId").remove()
-        answerDisp.textContent = "You Ran Out of Time"
-
+        document.getElementById("disappearDiv").remove();
+        document.getElementById("lineId").remove();
+        answerDisp.textContent = "You Ran Out of Time";
     }
     } ,1000) 
 }  
+
+// ************************************************
+// HIGH SCORE FUNCTION
+function scoreTabulator() {
+    scoreTab = (100) + (secondsLeft *10)
+    trackedScore = trackedScore + scoreTab
+    userScore.textContent = (trackedScore)
+}
+
 
 //Initial Quiz Starting Page
 function pageChange1() {
@@ -130,10 +143,17 @@ posiAnswer2.addEventListener('click', function() {
         posiAnswer2.textContent == gameArray[2]["rightAnswer3"])  
     {answerDisp.textContent = "GREAT CODER!!";
     console.log("correct page 3 log");
+    scoreTabulator();
     pageChange4(); }
     else if (mainHeadDisp.textContent == gameArray[3]["question"] &&
             posiAnswer2.textContent == gameArray[3]["rightAnswer4"]){
-            answerDisp.textContent = ("QUIZ COMPLETE, CHECK HIGH SCORES")}
+            scoreTabulator();
+            answerDisp.textContent = ("QUIZ COMPLETE, CHECK HIGH SCORES");
+            document.getElementById("disappearDiv").remove();
+            document.getElementById("lineId").remove();
+            countDownNumbDisp.textContent = (" "); // NEED TO SHUT OFF TIMER
+            }
+
     else {secondsLeft = secondsLeft -10}
     }, )
 
@@ -142,6 +162,7 @@ posiAnswer3.addEventListener('click', function() {
         posiAnswer3.textContent == gameArray[1]["rightAnswer2"]) 
     {answerDisp.textContent = "GOOD JOB CODER!!";
     console.log("correct page 2 log");
+    scoreTabulator();
     pageChange3(); }
     else {secondsLeft = secondsLeft -10 }
 }, )
@@ -151,6 +172,7 @@ posiAnswer4.addEventListener('click', function() {
         posiAnswer4.textContent == gameArray[0]["rightAnswer1"]) {
     answerDisp.textContent = "GOOD CODER!!!";
     {console.log("correct page 1  log"); }
+    scoreTabulator();
     pageChange2(); }
     else { secondsLeft = secondsLeft -10}
 }, )
