@@ -1,0 +1,9 @@
+.hideMe {
+    visibility: hidden;
+}
+
+.line {
+    height: 2px;
+    background: black;
+    
+}

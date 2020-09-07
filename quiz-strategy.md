@@ -1,10 +1,25 @@
 
+This is a document for strategizing how I will accomplish creating the Javascript Quiz Assignment
 
 
-
-1. Create a landing page
+Page One - Create a landing page
    
-    Content saying there is a quiz here
+    top nav bar
+        top left - link to high scores
+        top right timer countdown
+    
+    Div content holder 
+        <h1> - Coding Quiz Challenge
+        <h2> - "try and take this quiz blah blah."
+        container 
+        <div id = answer> "start quiz button in this instance
+        <div id = answer> hidden
+        <div id = answer> hidden
+        <div id = answer> hidden
+        container
+        <div = line> hidden
+        <h2>         hidden
+
 
     Timer already exists at the top right hand side, but hasn't been started
     
