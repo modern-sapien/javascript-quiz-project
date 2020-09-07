@@ -2,21 +2,23 @@ console.log("hello cruel world")
 
 var countDownNumbDisp = document.querySelector("#timer");
 console.log(countDownNumbDisp)
+var quizContainer = document.querySelector("#disappearDiv");
 var timerButton = document.querySelector("#timerStart");
 console.log(timerButton)
 var subHeadDisp = document.querySelector("#subHeadingMain");
 var mainHeadDisp = document.querySelector("#headingMain")
+
 var posiAnswer1 = document.querySelector("#answer1");
 var posiAnswer2 = document.querySelector("#answer2");
 var posiAnswer3 = document.querySelector("#answer3");
 var posiAnswer4 = document.querySelector("#answer4");
+
 var lineDisp = document.querySelector("#lineId");
 var answerDisp = document.querySelector("#answerDisplay")
 
 var currentPage = 0
 
 var gameArray = [
-
     {   page: 1,
         question: "This is the content for the first page!!",
         answer1: "a lot but wrong",
@@ -65,9 +67,13 @@ function setTimer() {
     var timerInterval = setInterval(function() {
         secondsLeft--
         countDownNumbDisp.textContent = secondsLeft
-    if (secondsLeft === 0) {
+    if (secondsLeft < 0) {
         clearInterval(timerInterval);
         countDownNumbDisp.textContent = "NO TIME";
+        document.getElementById("disappearDiv").remove()
+        document.getElementById("lineId").remove()
+        answerDisp.textContent = "You Ran Out of Time"
+
     }
     } ,1000) 
 }  
@@ -114,13 +120,9 @@ function pageChange4() {
     posiAnswer4.textContent = gameArray[3]["answer2"];
 }
 
-
-
 posiAnswer1.addEventListener('click', function() {
-    if (posiAnswer1 !== gameArray[0]["rightAnswer1"]) 
-    {   secondsLeft-- //this subtracts extra seconds when you click wrong
-        console.log("incorrect page 1 log"); 
-        pageChange2();   }
+    if (posiAnswer1 !== gameArray[0]["rightAnswer1"])
+    {secondsLeft = secondsLeft -10}
 }, )
 
 posiAnswer2.addEventListener('click', function() {
@@ -132,6 +134,7 @@ posiAnswer2.addEventListener('click', function() {
     else if (mainHeadDisp.textContent == gameArray[3]["question"] &&
             posiAnswer2.textContent == gameArray[3]["rightAnswer4"]){
             answerDisp.textContent = ("QUIZ COMPLETE, CHECK HIGH SCORES")}
+    else {secondsLeft = secondsLeft -10}
     }, )
 
 posiAnswer3.addEventListener('click', function() {
@@ -140,7 +143,7 @@ posiAnswer3.addEventListener('click', function() {
     {answerDisp.textContent = "GOOD JOB CODER!!";
     console.log("correct page 2 log");
     pageChange3(); }
-    
+    else {secondsLeft = secondsLeft -10 }
 }, )
 
 posiAnswer4.addEventListener('click', function() {
@@ -149,4 +152,6 @@ posiAnswer4.addEventListener('click', function() {
     answerDisp.textContent = "GOOD CODER!!!";
     {console.log("correct page 1  log"); }
     pageChange2(); }
+    else { secondsLeft = secondsLeft -10}
 }, )
+
