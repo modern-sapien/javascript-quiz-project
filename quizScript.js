@@ -17,6 +17,9 @@ var posiAnswer2 = document.querySelector("#answer2");
 var posiAnswer3 = document.querySelector("#answer3");
 var posiAnswer4 = document.querySelector("#answer4");
 
+// Form Submission
+var submissionButton = document.querySelector("subButty");
+var formSubz = document.querySelector("#formz");
 var lineDisp = document.querySelector("#lineId");
 var answerDisp = document.querySelector("#answerDisplay");
 
@@ -75,10 +78,9 @@ function setTimer() {
     var timerInterval = setInterval(function() {
         secondsLeft--
         countDownNumbDisp.textContent = secondsLeft
-    if (secondsLeft < 0) {
+    if (secondsLeft <= 0) {
         clearInterval(timerInterval);
         countDownNumbDisp.textContent = 0;
-        document.getElementById("lineId").remove();
         answerDisp.textContent = "You Ran Out of Time";
     }
     } ,1000) 
@@ -134,22 +136,17 @@ function pageChange5() {
     answerDisp.textContent = ("QUIZ COMPLETE!");
     document.getElementById("disappearDiv").remove();
     document.getElementById("lineId").remove();
-    mainHeadDisp.textContent = ("All done!")
+    mainHeadDisp.classList.remove("text-center");
+    mainHeadDisp.textContent = ("All done!");
+    subHeadDisp.classList.remove("text-center");
     subHeadDisp.textContent = ("YOUR SCORE: " + trackedScore);
     subHeadDisp.classList.remove("hideMe");
     answerDisp.classList.add("hideMe");
-    secondsLeft = 0;
-}
-// FORM CREATION
-// create form
-    var initialForm = document.createElement("form")
-    initialForm.textContent = name;
+    formSubz.classList.remove("hideMe");
+}    
     
-
-
-//********************************************************************
-//ANSWER SUBMISSION SECTION
-//*******************************************************************
+//**************************************************************
+// POSSIBLE ANSWERS AREA
 posiAnswer1.addEventListener('click', function() {
     if (posiAnswer1 !== gameArray[0]["rightAnswer1"])
     {secondsLeft = secondsLeft -10}
@@ -165,6 +162,7 @@ posiAnswer2.addEventListener('click', function() {
     else if (mainHeadDisp.textContent == gameArray[3]["question"] &&
             posiAnswer2.textContent == gameArray[3]["rightAnswer4"]){
             scoreTabulator();
+            secondsLeft = 0;
             pageChange5();
             }
 
@@ -175,6 +173,7 @@ posiAnswer3.addEventListener('click', function() {
     if (mainHeadDisp.textContent == gameArray[1]["question"] &&
         posiAnswer3.textContent == gameArray[1]["rightAnswer2"]) 
     {answerDisp.textContent = "GOOD JOB CODER!!";
+    
     console.log("correct page 2 log");
     scoreTabulator();
     pageChange3(); }
@@ -191,3 +190,10 @@ posiAnswer4.addEventListener('click', function() {
     else { secondsLeft = secondsLeft -10}
 }, )
 
+
+//*************************************************************************
+//SUBMISSION
+//*************************************************************************
+subButty.addEventListener("click", function(event) {
+        event.preventDefault()
+    });
