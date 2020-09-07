@@ -1,14 +1,17 @@
 console.log("hello cruel world")
+//this container will be where the FORM populates when the testing is over
 var containerDiv = document.querySelector(".m-auto")
-console.log(containerDiv + "hello container")
+//this is the timer span in the upper right hand corner
 var countDownNumbDisp = document.querySelector("#timer");
-console.log(countDownNumbDisp)
+//this is removed when the quiz is over
 var quizContainer = document.querySelector("#disappearDiv");
+
+// this is the button that starts the beginnging of the quiz
 var timerButton = document.querySelector("#timerStart");
-console.log(timerButton)
+
 var subHeadDisp = document.querySelector("#subHeadingMain");
 var mainHeadDisp = document.querySelector("#headingMain")
-
+// possible answer target ID divs
 var posiAnswer1 = document.querySelector("#answer1");
 var posiAnswer2 = document.querySelector("#answer2");
 var posiAnswer3 = document.querySelector("#answer3");
@@ -66,7 +69,6 @@ timerButton.addEventListener("click", function() {
     pageChange1(); //hides appropriate IDs & unhides initial content
                   // initializes with original question content & answer
     setTimer();
-
 }, )
 
 function setTimer() {
@@ -81,7 +83,6 @@ function setTimer() {
     }
     } ,1000) 
 }  
-
 // ************************************************
 // HIGH SCORE FUNCTION
 function scoreTabulator() {
@@ -89,7 +90,6 @@ function scoreTabulator() {
     trackedScore = trackedScore + scoreTab
     userScore.textContent = (trackedScore)
 }
-
 
 //Initial Quiz Starting Page
 function pageChange1() {
@@ -107,8 +107,6 @@ function pageChange1() {
     posiAnswer3.textContent = gameArray[0]["answer3"];
     posiAnswer4.textContent = gameArray[0]["rightAnswer1"];
 }
-
-
 function pageChange2() {
     mainHeadDisp.textContent = gameArray[1]["question"];
     posiAnswer1.textContent = gameArray[1]["answer1"];
@@ -116,7 +114,6 @@ function pageChange2() {
     posiAnswer3.textContent = gameArray[1]["rightAnswer2"];
     posiAnswer4.textContent = gameArray[1]["answer3"];
 }
-
 function pageChange3() {
     mainHeadDisp.textContent = gameArray[2]["question"];
     posiAnswer1.textContent = gameArray[2]["answer1"];
@@ -124,7 +121,6 @@ function pageChange3() {
     posiAnswer3.textContent = gameArray[2]["answer3"];
     posiAnswer4.textContent = gameArray[2]["answer2"];
 }
-
 function pageChange4() {
     mainHeadDisp.textContent = gameArray[3]["question"];
     posiAnswer1.textContent = gameArray[3]["answer1"];
@@ -132,7 +128,8 @@ function pageChange4() {
     posiAnswer3.textContent = gameArray[3]["answer3"];
     posiAnswer4.textContent = gameArray[3]["answer2"];
 }
-
+//******************************************************************
+//FINAL PAGE 
 function pageChange5() {
     answerDisp.textContent = ("QUIZ COMPLETE!");
     document.getElementById("disappearDiv").remove();
@@ -140,13 +137,19 @@ function pageChange5() {
     mainHeadDisp.textContent = ("All done!")
     subHeadDisp.textContent = ("YOUR SCORE: " + trackedScore);
     subHeadDisp.classList.remove("hideMe");
-    var formSubHolder = document.createElement("div");
-    formSubHolder.textContent = ("I EXIST")
-    containerDiv.appendChild(formSubHolder);
     answerDisp.classList.add("hideMe");
     secondsLeft = 0;
 }
+// FORM CREATION
+// create form
+    var initialForm = document.createElement("form")
+    initialForm.textContent = name;
+    
 
+
+//********************************************************************
+//ANSWER SUBMISSION SECTION
+//*******************************************************************
 posiAnswer1.addEventListener('click', function() {
     if (posiAnswer1 !== gameArray[0]["rightAnswer1"])
     {secondsLeft = secondsLeft -10}
