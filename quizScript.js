@@ -1,5 +1,6 @@
 console.log("hello cruel world")
-
+var containerDiv = document.querySelector(".m-auto")
+console.log(containerDiv + "hello container")
 var countDownNumbDisp = document.querySelector("#timer");
 console.log(countDownNumbDisp)
 var quizContainer = document.querySelector("#disappearDiv");
@@ -75,7 +76,6 @@ function setTimer() {
     if (secondsLeft < 0) {
         clearInterval(timerInterval);
         countDownNumbDisp.textContent = 0;
-        document.getElementById("disappearDiv").remove();
         document.getElementById("lineId").remove();
         answerDisp.textContent = "You Ran Out of Time";
     }
@@ -133,6 +133,20 @@ function pageChange4() {
     posiAnswer4.textContent = gameArray[3]["answer2"];
 }
 
+function pageChange5() {
+    answerDisp.textContent = ("QUIZ COMPLETE!");
+    document.getElementById("disappearDiv").remove();
+    document.getElementById("lineId").remove();
+    mainHeadDisp.textContent = ("All done!")
+    subHeadDisp.textContent = ("YOUR SCORE: " + trackedScore);
+    subHeadDisp.classList.remove("hideMe");
+    var formSubHolder = document.createElement("div");
+    formSubHolder.textContent = ("I EXIST")
+    containerDiv.appendChild(formSubHolder);
+    answerDisp.classList.add("hideMe");
+    secondsLeft = 0;
+}
+
 posiAnswer1.addEventListener('click', function() {
     if (posiAnswer1 !== gameArray[0]["rightAnswer1"])
     {secondsLeft = secondsLeft -10}
@@ -148,10 +162,7 @@ posiAnswer2.addEventListener('click', function() {
     else if (mainHeadDisp.textContent == gameArray[3]["question"] &&
             posiAnswer2.textContent == gameArray[3]["rightAnswer4"]){
             scoreTabulator();
-            answerDisp.textContent = ("QUIZ COMPLETE, CHECK HIGH SCORES");
-            document.getElementById("disappearDiv").remove();
-            document.getElementById("lineId").remove();
-            secondsLeft = 0;
+            pageChange5();
             }
 
     else {secondsLeft = secondsLeft -10}

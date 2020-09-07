@@ -35,16 +35,18 @@ Step One - Create a landing page
 
 Step 2 Target
 ## TARGETS
-    id="timer" - countdowntimer
+    id="timer" linked with countDownNumbDisp variable
     id="timeStart" - button that clicks & begins quiz
     id="subHeading" - displays content, but disappears on quiz begin
-    id="headingMan" -changes content to question content
-    id="answer1" -
-    id="answer2" -
-    id="answer3" -
-    id="answer4" -
+    id="headingMain" -changes content to question content
+    id="answer1" - unhide/add content
+    id="answer2" - unhide/add content
+    id="answer3" - unhide/add content
+    id="answer4" - unhide/add content
+    id= "lineId" - unhide
+    id= "answerDisplay" - unhide
 ## 1. Click to call function
-id= "timeStart" is what will initialize the timer 
+[done] id= "timeStart" is what will initialize the timer 
 
 ## Upon timeStart click // hideMe
 id= "timeStart" set attribute "class", "hideMe" 
@@ -54,3 +56,21 @@ id = "timer" begin time loop countdown from 75
 
 id= "headingMain" is where questions will be displayed
 id = "answer1", "answer2", "answer3", "answer4" // needs class  at start
+
+Create Four of these
+QuizGameArray = [
+    Question: one
+    Answer: 1
+    Answer: 2
+    Answer: 3
+    Answer: 4
+]
+
+Function Change Page
+Cycles Between Content
+[1] [2] [3] [4] <<< all quizzes 
+
+[5] <<< highscore initials page
+All Done
+Your Score
+Enter Initials[              ] << form [SUBMIT] << submit button
