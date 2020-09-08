@@ -72,5 +72,9 @@ Cycles Between Content
 
 [5] <<< highscore initials page
 All Done
+
+## This is a form
 Your Score
 Enter Initials[              ] << form [SUBMIT] << submit button
+
+## Data Storing

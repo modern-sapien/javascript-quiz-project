@@ -22,7 +22,7 @@ var submissionButton = document.querySelector("subButty");
 var formSubz = document.querySelector("#formz");
 var lineDisp = document.querySelector("#lineId");
 var answerDisp = document.querySelector("#answerDisplay");
-
+var initialValue = document.querySelector("#initialText").value
 var userScore = document.querySelector("#scoreTracker");
 
 var currentPage = 0;
@@ -30,8 +30,11 @@ var trackedScore = 0;
 
 //*******************************************************
 // LOCAL STORAGE 
-var storageArray = []
-localStorage.setItem("scoreStoreArray", storageArray);
+var scoreStorageArray = {
+    intials:[],
+    arrayScore:[]
+}
+
 
 // Object array that holds question and answer content
 //********************************************************
@@ -149,7 +152,7 @@ function pageChange5() {
     subHeadDisp.classList.remove("hideMe");
     answerDisp.classList.add("hideMe");
     formSubz.classList.remove("hideMe");
-    submitScore();
+    // submitScore();
 }    
     
 //**************************************************************
@@ -200,20 +203,20 @@ posiAnswer4.addEventListener('click', function() {
 //SUBMISSION
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
-        // event.preventDefault()
-        console.log("this could create a value");
-        var playerInitials = document.querySelector("#initialText");        
-        event.preventDefault()
-        submitScore();
+        arrayScore = trackedScore;
+        initialValue = initials;
+        console.log(arrayScore);
+        console.log(initialValue);
+        console.log(scoreStorageArray);
+        debugger;
+        event.preventDefault()      
     });
 
-function submitScore() {
-    console.log(playerInitials.value);
-    localStorage.setObject("scoreStoreArray", JSON.parse(trackedScore.value+playerInitials.value));
-}
-// // Store data
-// var someData = 'The data that I want to store for later.';
-// localStorage.setItem('myDataKey', someData);
+// function submitScore() {
 
-// localStorage.removeItem("name")
-// console.log(localStorage)
+
+
+// var scoreStorageArray = {
+//     intials:[],
+//     arrayScore:[]
+// }
