@@ -22,7 +22,7 @@ var submissionButton = document.querySelector("subButty");
 var formSubz = document.querySelector("#formz");
 var lineDisp = document.querySelector("#lineId");
 var answerDisp = document.querySelector("#answerDisplay");
-var initialValue = document.querySelector("#initialText").value
+var initialText = document.querySelector("#initialText")
 var userScore = document.querySelector("#scoreTracker");
 
 var currentPage = 0;
@@ -30,10 +30,7 @@ var trackedScore = 0;
 
 //*******************************************************
 // LOCAL STORAGE 
-var scoreStorageArray = {
-    intials:[],
-    arrayScore:[]
-}
+var scoreStorageArray = [];
 
 
 // Object array that holds question and answer content
@@ -204,13 +201,21 @@ posiAnswer4.addEventListener('click', function() {
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
         arrayScore = trackedScore;
-        initialValue = initials;
+        initials = initialText.value;
         console.log(arrayScore);
-        console.log(initialValue);
-        console.log(scoreStorageArray);
-        debugger;
-        event.preventDefault()      
-    });
+        console.log(initials);
+        
+        scoreStorageArray.push(
+            {
+                userEntry: initials,
+                highScore: trackedScore 
+            }
+        )
+        
+        localStorage.setItem("infinitePlay", JSON.stringify(scoreStorageArray));
+        event.preventDefault();
+              
+        });
 
 // function submitScore() {
 
