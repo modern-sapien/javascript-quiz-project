@@ -1,17 +1,17 @@
 console.log("hello cruel world")
-//this container will be where the FORM populates when the testing is over
+// This container will be where the FORM populates when the testing is over
 var containerDiv = document.querySelector(".m-auto")
-//this is the timer span in the upper right hand corner
+// This is the timer span in the upper right hand corner
 var countDownNumbDisp = document.querySelector("#timer");
-//this is removed when the quiz is over
+// This is removed when the quiz is over
 var quizContainer = document.querySelector("#disappearDiv");
 
-// this is the button that starts the beginnging of the quiz
+// This is the button that starts the beginnging of the quiz
 var timerButton = document.querySelector("#timerStart");
 
 var subHeadDisp = document.querySelector("#subHeadingMain");
 var mainHeadDisp = document.querySelector("#headingMain")
-// possible answer target ID divs
+// Possible answer target ID divs
 var posiAnswer1 = document.querySelector("#answer1");
 var posiAnswer2 = document.querySelector("#answer2");
 var posiAnswer3 = document.querySelector("#answer3");
@@ -27,6 +27,11 @@ var userScore = document.querySelector("#scoreTracker");
 
 var currentPage = 0;
 var trackedScore = 0;
+
+//*******************************************************
+// LOCAL STORAGE 
+var storageArray = []
+localStorage.setItem("scoreStoreArray", storageArray);
 
 // Object array that holds question and answer content
 //********************************************************
@@ -93,6 +98,7 @@ function scoreTabulator() {
     userScore.textContent = (trackedScore)
 }
 
+//*************************************************/
 //Initial Quiz Starting Page
 function pageChange1() {
     timerButton.classList.add("hideMe");
@@ -143,6 +149,7 @@ function pageChange5() {
     subHeadDisp.classList.remove("hideMe");
     answerDisp.classList.add("hideMe");
     formSubz.classList.remove("hideMe");
+    submitScore();
 }    
     
 //**************************************************************
@@ -165,7 +172,6 @@ posiAnswer2.addEventListener('click', function() {
             secondsLeft = 0;
             pageChange5();
             }
-
     else {secondsLeft = secondsLeft -10}
     }, )
 
@@ -173,7 +179,6 @@ posiAnswer3.addEventListener('click', function() {
     if (mainHeadDisp.textContent == gameArray[1]["question"] &&
         posiAnswer3.textContent == gameArray[1]["rightAnswer2"]) 
     {answerDisp.textContent = "GOOD JOB CODER!!";
-    
     console.log("correct page 2 log");
     scoreTabulator();
     pageChange3(); }
@@ -184,7 +189,7 @@ posiAnswer4.addEventListener('click', function() {
     if (mainHeadDisp.textContent == gameArray[0]["question"] &&
         posiAnswer4.textContent == gameArray[0]["rightAnswer1"]) {
     answerDisp.textContent = "GOOD CODER!!!";
-    {console.log("correct page 1  log"); }
+    {console.log("correct page 1 log"); }
     scoreTabulator();
     pageChange2(); }
     else { secondsLeft = secondsLeft -10}
@@ -197,10 +202,18 @@ posiAnswer4.addEventListener('click', function() {
 subButty.addEventListener("click", function(event) {
         // event.preventDefault()
         console.log("this could create a value");
+        var playerInitials = document.querySelector("#initialText");        
+        event.preventDefault()
         submitScore();
     });
 
 function submitScore() {
-    window.localStorage.name = document.getElementById(initialText).value;
-
+    console.log(playerInitials.value);
+    localStorage.setObject("scoreStoreArray", JSON.parse(trackedScore.value+playerInitials.value));
 }
+// // Store data
+// var someData = 'The data that I want to store for later.';
+// localStorage.setItem('myDataKey', someData);
+
+// localStorage.removeItem("name")
+// console.log(localStorage)
