@@ -8,6 +8,15 @@
 
 .line {
     height: 2px;
-    background: black;
+    background: yellow;
 
+}
+
+.top {
+    height: 100px;
+}
+
+.darkMode {
+    background: black;
+    color: whitesmoke;    
 }

@@ -204,16 +204,14 @@ subButty.addEventListener("click", function(event) {
         initials = initialText.value;
         console.log(arrayScore);
         console.log(initials);
-        
+
+        // array where I am storing values for user entry initials and high scores
         scoreStorageArray.push(
-            {
-                userEntry: initials,
+            {   userEntry: initials,
                 highScore: trackedScore 
-            }
-        )
-        
-        localStorage.setItem("infinitePlay", JSON.stringify(scoreStorageArray));
-        event.preventDefault();
+            } );
+
+        localStorage.setItem("infinitePlay",JSON.stringify(scoreStorageArray));
               
         });
 
