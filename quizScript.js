@@ -204,26 +204,27 @@ posiAnswer4.addEventListener('click', function() {
 // SET ARRAY in Application 
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
-        arrayScore = trackedScore;
+
+        // initial value collection
         initials = initialText.value;
-        console.log(arrayScore);
         console.log(initials);
-
-        // array where I am storing values for user entry initials and high scores
-        scoreStorageObject.push(
-            {   userEntry: initials,
-                highScore: trackedScore 
-            } );
         
+        //score retrieval and storage
+        var storedScores = JSON.parse(localStorage.getItem("highscores"));
         
-        localStorage.setItem("infinitePlay", JSON.stringify(scoreStorageArray));
-        });
+        // THIS IS WHY THINGS ARE OVERWRITTEN OR NOT IN 
+        if (storedScore !== null) {
+            arrayScore = storedScore;
+        }
 
+        var scoreStorageObject = { 
+            userEntry: initials,
+            highScore: arrayScore
+        };
+        arrayScore.push(scoreStorageObject);
+        localStorage.setItem("winnerList", JSON.stringify(scoreStorageObject));
+        
+     
+    });
 
-
-
-
-// var scoreStorageArray = {
-//     intials:[],
-//     arrayScore:[]
-// }
+ 
