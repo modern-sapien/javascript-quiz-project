@@ -30,7 +30,7 @@ var trackedScore = 0;
 
 //*******************************************************
 // LOCAL STORAGE 
-var scoreStorageObject = {};
+var scoreStorageArray = [];
 
 
 // Object array that holds question and answer content
@@ -204,27 +204,31 @@ posiAnswer4.addEventListener('click', function() {
 // SET ARRAY in Application 
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
-
-        // initial value collection
+        arrayScore = trackedScore;
         initials = initialText.value;
+        console.log(arrayScore);
         console.log(initials);
-        
-        //score retrieval and storage
-        var storedScores = JSON.parse(localStorage.getItem("highscores"));
-        
-        // THIS IS WHY THINGS ARE OVERWRITTEN OR NOT IN 
-        if (storedScore !== null) {
-            arrayScore = storedScore;
+
+        // array where I am storing values for user entry initials and high scores
+        scoreStorageArray.push(
+            {   userEntry: initials,
+                highScore: trackedScore 
+            } );
+        for (var i = 0; i < scoreStorageArray.length; i++) {
+        if (scoreStorageArray[i] !== null)
+        localStorage.setItem(JSON.stringify(initials), JSON.stringify(scoreStorageArray[i]));
         }
 
-        var scoreStorageObject = { 
-            userEntry: initials,
-            highScore: arrayScore
-        };
-        arrayScore.push(scoreStorageObject);
-        localStorage.setItem("winnerList", JSON.stringify(scoreStorageObject));
-        
-     
-    });
+        });
 
- 
+
+
+// function submitScore() {
+
+
+
+
+// var scoreStorageArray = {
+//     intials:[],
+//     arrayScore:[]
+// }
