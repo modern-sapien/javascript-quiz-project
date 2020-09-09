@@ -20,3 +20,24 @@
     background: black;
     color: whitesmoke;    
 }
+
+.coolScores {
+    background: yellow;
+    color: black;
+    border-color: white;
+    border: 2px;
+    width: auto;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.styleButton {
+    background: orchid !important;
+    color: black !important;
+    border-color: white !important;
+    border: 2px !important;
+    width: fit-content !important;
+    height: 30px !important;
+    margin-top: 10px !important;
+
+}

@@ -137,7 +137,7 @@ function pageChange4() {
     posiAnswer4.textContent = gameArray[3]["answer2"];
 }
 //******************************************************************
-//FINAL PAGE 
+//SCORE ENTRY PAGE 
 function pageChange5() {
     answerDisp.textContent = ("QUIZ COMPLETE!");
     document.getElementById("disappearDiv").remove();
@@ -149,8 +149,6 @@ function pageChange5() {
     subHeadDisp.classList.remove("hideMe");
     answerDisp.classList.add("hideMe");
     formSubz.classList.remove("hideMe");
-    
-    // submitScore();
 }    
     
 //**************************************************************
@@ -208,8 +206,6 @@ subButty.addEventListener("click", function(event) {
         initials = initialText.value;
         console.log(arrayScore);
         console.log(initials);
-        debugger
-
         var scoreStorageArray = JSON.parse(localStorage.getItem("infinityKey"));
         if (scoreStorageArray === null) {
             scoreStorageArray = [];
@@ -220,13 +216,10 @@ subButty.addEventListener("click", function(event) {
                 highScore: trackedScore 
             } );
         
-        // this will log keys and values, but not a key with multiple values.
-        for (var i = 0; i < scoreStorageArray.length; i++) {
-        // if (scoreStorageArray[i] === initials) {
-        //         arrayScore[i].
-        // }
-        
-        }
+
         localStorage.setItem("infinityKey", JSON.stringify(scoreStorageArray));
+   
         
     });
+
+   

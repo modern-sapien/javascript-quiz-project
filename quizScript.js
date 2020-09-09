@@ -211,86 +211,54 @@ posiAnswer4.addEventListener('click', function() {
 // SET ARRAY in Application 
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
-       
 
-        arrayScore = trackedScore;
-        initials = initialText.value;
-        console.log(arrayScore);
-        console.log(initials);
+    var scoreStorageArray = JSON.parse(localStorage.getItem("infinityKey"));
+    if (scoreStorageArray === null) {
+        scoreStorageArray = [];
+    }
+     
+    scoreForm.classList.remove("hideMe");
+    formSubz.classList.add("hideMe");
+    subHeadDisp.classList.add("hideMe");
+    mainHeadDisp.classList.add("hideMe");
+    userScore.classList.add("hideMe");
+    arrayScore = trackedScore;
+    initials = initialText.value;
+    console.log(arrayScore);
+    console.log(initials);
+    
+    
+    // array where I am storing values for user entry initials and high scores
+    scoreStorageArray.push(
+        {   userEntry: initials,
+            highScore: trackedScore 
+        } );
+    
+    console.log(scoreStorageArray)
+    for (var i = 0; i < scoreStorageArray.length; i++) {
+        var scoreLi = document.createElement("div");
+        scoreLi.textContent = "  INITIALS   " + scoreStorageArray[i].userEntry + "   SCORE      " + scoreStorageArray[i].highScore;
+        scoreLi.setAttribute("data-index", i);
+        scoreLi.classList.add("coolScores");
+        scoreList.appendChild(scoreLi);
+        scoreSpan.textContent = scoreStorageArray.length
+    }
 
-        // array where I am storing values for user entry initials and high scores
-        scoreStorageArray.push(
-            {   userEntry: initials,
-                highScore: trackedScore 
-            } );
 
-        renderScores();
-        storeScores();
-
-        getScores();
-
-    // this is where i store my score/initials into the scoreStorageArray
-        });
-
-        // RENDER SCORE FUNCTION START
-        function renderScores() {
-            scoreText.innerHTML = "";
-            scoreSpan.textContent = scoreStorageArray.length;
+    localStorage.setItem("infinityKey", JSON.stringify(scoreStorageArray));
+    
+    
+});
+      
+        //     for (var i = 0; i < scoreStorageArray.length; i++) {
+        //         var scoreStorageArray = scoreStorageArray[i];
         
-            for (var i = 0; i < scoreStorageArray.length; i++) {
-                var scoreStorageArray = scoreStorageArray[i];
+        //         var scoreLi = document.createElement("li");
+        //         scoreLi.textContent = scoreStorageArray;
+        //         scoreLi.setAttribute("data-index", i);
         
-                var scoreLi = document.createElement("li");
-                scoreLi.textContent = scoreStorageArray;
-                scoreLi.setAttribute("data-index", i);
-        
-                scoreList.appendChild(scoreLi);
-                }
-            }
-        // RENDER SCORE FUNCTION END
-        
-        function getScores() {
-        
-            var storedValues = JSON.parse(localStorage.getItem("infinityKey")); 
-            
-                if (storedValues !== null) {
-                    scoreStorageArray = storedValues;
-                }
-                renderScores();
-            }
-        
-        // STORE SCORE FUNCTION BEGIN
-        function storeScores() {
-            localStorage.setItem("inifinityKey", JSON.stringify(todos));
-        }
-        
-        scoreForm.addEventListener("submit", function(event)    {
-            event.preventDefault();
-            
-            var scoreContent = scoreInput.value.trim();
-            if (scoreContent == "") {
-                return;
-            }
-        
-            scoreStorageArray.push(scoreContent);
-            scoreInput.value = "";
-        
-            storeScores();
-            renderScores();
-        });
-        // STORE SCORE FUNCTION END
-        
-        // CLEAR SCORE BUTTON
-        // clearScoreButton.addEventListener("click", function(event) {
-        //     var clearButton = event.target;
-        
-        //     if (clearButton.matches("button") === true) {
-        //         for (var i=0; i < scoreStorageArray.length; i++) {
-        //             scoreList.removeChild(scoreList[i]);
+        //         scoreList.appendChild(scoreLi);
         //         }
-        //     storeScores();
-        //     renderScores();
         //     }
-        // })
-        // CLEAR SCORE BUTTON END
+        // RENDER SCORE FUNCTION END
         
