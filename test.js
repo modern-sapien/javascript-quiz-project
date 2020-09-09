@@ -208,16 +208,25 @@ subButty.addEventListener("click", function(event) {
         initials = initialText.value;
         console.log(arrayScore);
         console.log(initials);
+        debugger
 
+        var scoreStorageArray = JSON.parse(localStorage.getItem("infinityKey"));
+        if (scoreStorageArray === null) {
+            scoreStorageArray = [];
+        }
         // array where I am storing values for user entry initials and high scores
         scoreStorageArray.push(
             {   userEntry: initials,
                 highScore: trackedScore 
             } );
+        
         // this will log keys and values, but not a key with multiple values.
-            for (var i = 0; i < scoreStorageArray.length; i++) {
-        if (scoreStorageArray !== null)
-        localStorage.setItem(JSON.stringify(initials), JSON.stringify(scoreStorageArray[i]));
+        for (var i = 0; i < scoreStorageArray.length; i++) {
+        // if (scoreStorageArray[i] === initials) {
+        //         arrayScore[i].
+        // }
+        
         }
-
-        });
+        localStorage.setItem("infinityKey", JSON.stringify(scoreStorageArray));
+        
+    });
