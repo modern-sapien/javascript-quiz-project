@@ -28,10 +28,17 @@ var userScore = document.querySelector("#scoreTracker");
 var currentPage = 0;
 var trackedScore = 0;
 
-//*******************************************************
-// LOCAL STORAGE 
-var scoreStorageArray = [];
+// **********************************************************
+// SCORE TARGETING
+var scoreForm = document.querySelector("#scoreForm");
+var scoreInput = document.querySelector("#scoreText");
+var scoreSpan = document.querySelector("#scoreSpan");
+var scoreList = document.querySelector("#scoreList");
+var clearScoreButton = document.querySelector("#clearScoreButton");
 
+//*******************************************************
+// LOCAL STORAGE OPERATIONS
+var scoreStorageArray = [];
 
 // Object array that holds question and answer content
 //********************************************************
@@ -204,6 +211,8 @@ posiAnswer4.addEventListener('click', function() {
 // SET ARRAY in Application 
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
+       
+
         arrayScore = trackedScore;
         initials = initialText.value;
         console.log(arrayScore);
@@ -214,21 +223,74 @@ subButty.addEventListener("click", function(event) {
             {   userEntry: initials,
                 highScore: trackedScore 
             } );
-        for (var i = 0; i < scoreStorageArray.length; i++) {
-        if (scoreStorageArray[i] !== null)
-        localStorage.setItem(JSON.stringify(initials), JSON.stringify(scoreStorageArray[i]));
-        }
 
+        renderScores();
+        storeScores();
+
+        getScores();
+
+    // this is where i store my score/initials into the scoreStorageArray
         });
 
-
-
-// function submitScore() {
-
-
-
-
-// var scoreStorageArray = {
-//     intials:[],
-//     arrayScore:[]
-// }
+        // RENDER SCORE FUNCTION START
+        function renderScores() {
+            scoreText.innerHTML = "";
+            scoreSpan.textContent = scoreStorageArray.length;
+        
+            for (var i = 0; i < scoreStorageArray.length; i++) {
+                var scoreStorageArray = scoreStorageArray[i];
+        
+                var scoreLi = document.createElement("li");
+                scoreLi.textContent = scoreStorageArray;
+                scoreLi.setAttribute("data-index", i);
+        
+                scoreList.appendChild(scoreLi);
+                }
+            }
+        // RENDER SCORE FUNCTION END
+        
+        function getScores() {
+        
+            var storedValues = JSON.parse(localStorage.getItem("infinityKey")); 
+            
+                if (storedValues !== null) {
+                    scoreStorageArray = storedValues;
+                }
+                renderScores();
+            }
+        
+        // STORE SCORE FUNCTION BEGIN
+        function storeScores() {
+            localStorage.setItem("inifinityKey", JSON.stringify(todos));
+        }
+        
+        scoreForm.addEventListener("submit", function(event)    {
+            event.preventDefault();
+            
+            var scoreContent = scoreInput.value.trim();
+            if (scoreContent == "") {
+                return;
+            }
+        
+            scoreStorageArray.push(scoreContent);
+            scoreInput.value = "";
+        
+            storeScores();
+            renderScores();
+        });
+        // STORE SCORE FUNCTION END
+        
+        // CLEAR SCORE BUTTON
+        // clearScoreButton.addEventListener("click", function(event) {
+        //     var clearButton = event.target;
+        
+        //     if (clearButton.matches("button") === true) {
+        //         for (var i=0; i < scoreStorageArray.length; i++) {
+        //             scoreList.removeChild(scoreList[i]);
+        //         }
+        //     storeScores();
+        //     renderScores();
+        //     }
+        // })
+        // CLEAR SCORE BUTTON END
+        
