@@ -208,6 +208,27 @@ posiAnswer4.addEventListener('click', function() {
 
 // =======================================================================
 // HIGH SCORE EVENT LISTENER
+clearScoreButton.addEventListener("click", function() {
+    console.log(scoreStorageArray.length + " DID THIS WORK");
+    scoreList.classList.add("hideMe");
+    localStorage.clear();
+    scoreSpan.textContent = scoreStorageArray.length;
+    for (var i = 0; i < scoreStorageArray.length; i++) {
+    scoreList.removeChild(scoreLi[i]);
+    }
+    
+    event.preventDefault(); 
+// clearScores();
+    
+}
+)
+
+// function clearScores() {
+//     window.localStorage.removeItem("scoreStorageArray");
+//     window.location.reload();
+// };
+
+// document.getElementById("clearScoreButton").onclick = clearScores
 
 
 //*************************************************************************
@@ -228,8 +249,6 @@ subButty.addEventListener("click", function(event) {
     userScore.classList.add("hideMe");
     arrayScore = trackedScore;
     initials = initialText.value;
-    console.log(arrayScore);
-    console.log(initials);
     
     
     // array where I am storing values for user entry initials and high scores
@@ -241,7 +260,7 @@ subButty.addEventListener("click", function(event) {
 
     console.log(scoreStorageArray)
     for (var i = 0; i < scoreStorageArray.length; i++) {
-        var scoreLi = document.createElement("div");
+        var scoreLi = document.createElement("li");
         scoreLi.textContent = "  INITIALS   " + scoreStorageArray[i].userEntry + "   SCORE      " + scoreStorageArray[i].highScore;
         scoreLi.setAttribute("data-index", i);
         scoreLi.classList.add("coolScores");

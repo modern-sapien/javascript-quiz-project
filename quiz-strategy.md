@@ -78,9 +78,3 @@ Your Score
 Enter Initials[              ] << form [SUBMIT] << submit button
 
 ## Data Storing
-
-I can create 
-
-
-CHECk if there is an array of high scores
-If not push 
