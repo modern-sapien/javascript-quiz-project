@@ -30,7 +30,7 @@ var trackedScore = 0;
 
 //*******************************************************
 // LOCAL STORAGE 
-var scoreStorageArray = [];
+var scoreStorageObject = {};
 
 
 // Object array that holds question and answer content
@@ -149,6 +149,7 @@ function pageChange5() {
     subHeadDisp.classList.remove("hideMe");
     answerDisp.classList.add("hideMe");
     formSubz.classList.remove("hideMe");
+    
     // submitScore();
 }    
     
@@ -171,7 +172,9 @@ posiAnswer2.addEventListener('click', function() {
             scoreTabulator();
             secondsLeft = 0;
             pageChange5();
-            }
+            
+        }
+
     else {secondsLeft = secondsLeft -10}
     }, )
 
@@ -197,7 +200,8 @@ posiAnswer4.addEventListener('click', function() {
 
 
 //*************************************************************************
-//SUBMISSION
+//SUBMISSION 
+// SET ARRAY in Application 
 //*************************************************************************
 subButty.addEventListener("click", function(event) {
         arrayScore = trackedScore;
@@ -210,12 +214,11 @@ subButty.addEventListener("click", function(event) {
             {   userEntry: initials,
                 highScore: trackedScore 
             } );
-
-        localStorage.setItem("infinitePlay",JSON.stringify(scoreStorageArray));
-              
+        
+        localStorage.setItem("infinitePlay", JSON.stringify(scoreStorageArray));
         });
 
-// function submitScore() {
+
 
 
 

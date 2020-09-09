@@ -34,7 +34,30 @@
             <a href="index.html">     
             <button type="button" class="btn btn-warning" id="indexReturnBtn">GO BACK</button></a>
             <button type="button" class="btn btn-warning" id="clearScoresBtn">CLEAR HIGH SCORES</button>
-              <div class=highScoreHolder>
+            <p>Score Count<span id="scoreCount">0</span></p>
+              
+            <!-- targeted by scoreForm -->
+            <form id="score-form" method="post">
+               
+
+                <label for="score-text">Add a score</label>
+                
+                <!-- targeted by scoreInput-->
+                <input type="text" placeholder="Whose next?" name="score-text" id="score-text" />
+                
+                <!--targeted by todoCountSpan-->
+                
+                <!-- targeted by scoreText -->
+                    <ul id=score-listi>
+                        
+                    </ul>
+
+
+
+            </form>
+            
+            "></form>
+            
 
               </div> 
             </div>
@@ -45,6 +68,6 @@
         </div>
                 
         </main>
-        <script src="quizScript.js" async defer></script>
+        <script src="test.js" async defer></script>
     </body>
 </html>
