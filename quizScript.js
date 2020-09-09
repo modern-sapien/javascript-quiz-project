@@ -206,6 +206,10 @@ posiAnswer4.addEventListener('click', function() {
 }, )
 
 
+// =======================================================================
+// HIGH SCORE EVENT LISTENER
+
+
 //*************************************************************************
 //SUBMISSION 
 // SET ARRAY in Application 
@@ -234,6 +238,7 @@ subButty.addEventListener("click", function(event) {
             highScore: trackedScore 
         } );
     
+
     console.log(scoreStorageArray)
     for (var i = 0; i < scoreStorageArray.length; i++) {
         var scoreLi = document.createElement("div");
