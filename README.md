@@ -2,6 +2,9 @@
 
 ## JAVASCRIPT QUIZ GAME PROJECT
 
+Link to the project
+https://modern-sapien.github.io/javascript-quiz-project/index.html
+
 ![Screensho of Webpage ](assets/quizScreenShot.png)
 
 # ==================================================
