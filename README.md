@@ -1,13 +1,14 @@
 # javascript-quiz-project
 
-## JAVASCRIPT QUIZ GAME
+## JAVASCRIPT QUIZ GAME PROJECT
 
 ![Screensho of Webpage ](assets/quizScreenShot.png)
 
+# ==================================================
 ## Introduction
 This assignment was to create a Javascript Quiz Game that would populate a quiz on a static HTML page that you could navigate through and gain points by answer correctly and lose points by getting the wrong answer. I created an extra step to the process by giving bonus points to a user for finishing in a quicker amount of time based on time left as a score multiplier. Before I started this quiz I reviewed everything I could for three full days prior to beginning as this class is the first experience I've had with javascript.
 
-# ===================================================
+# ==================================================
 ## Approach
 For this assignment I knew that I had the tools (after much review) to start in earnest using the tools I had available to me from practice on re-creating in class assignments and  outside research. I pseudo coded and created a strategy document to outline how I would approach creating this project before beginning.
 
@@ -21,7 +22,7 @@ Step 4. The quiz game itself relies on an array of objects that I access for con
 
 Step 5. Creating an object for the high scores to go into through a submit button & then having them show up once that button is clicked.
 
-Step 6. Clearing scores dynamically from the page and deleting.
+Step 6. Clearing scores dynamically from the page and returning to the beginning of the quiz.
 
 
 # ==========================================================
