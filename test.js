@@ -150,6 +150,10 @@ function pageChange5() {
     answerDisp.classList.add("hideMe");
     formSubz.classList.remove("hideMe");
 }    
+
+function pageChange6() {
+
+}
     
 //**************************************************************
 // POSSIBLE ANSWERS AREA
