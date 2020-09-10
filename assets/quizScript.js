@@ -250,14 +250,13 @@ subButty.addEventListener("click", function(event) {
             highScore: trackedScore 
         } );
 
-    console.log(scoreStorageArray)
     for (var i = 0; i < scoreStorageArray.length; i++) {
         var scoreLi = document.createElement("li");
         scoreLi.textContent = "  INITIALS   " + scoreStorageArray[i].userEntry + "   SCORE      " + scoreStorageArray[i].highScore;
         scoreLi.setAttribute("data-index", i);
         scoreLi.classList.add("coolScores");
         scoreList.appendChild(scoreLi);
-        scoreSpan.textContent = scoreStorageArray.length
-    }
+        scoreSpan.textContent = scoreStorageArray.length}
     localStorage.setItem("infinityKey", JSON.stringify(scoreStorageArray));
+    event.preventDefault(); 
 });
