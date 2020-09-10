@@ -214,14 +214,10 @@ clearScoreButton.addEventListener("click", function() {
     localStorage.clear();
     scoreSpan.textContent = scoreStorageArray.length;
     for (var i = 0; i < scoreStorageArray.length; i++) {
-    scoreList.removeChild(scoreLi[i]);
-    }
-    
+    scoreList.removeChild(scoreLi[i]); }
     event.preventDefault(); 
-// clearScores();
-    
 }
-)
+);
 
 // function clearScores() {
 //     window.localStorage.removeItem("scoreStorageArray");
@@ -241,7 +237,6 @@ subButty.addEventListener("click", function(event) {
     if (scoreStorageArray === null) {
         scoreStorageArray = [];
     }
-     
     scoreForm.classList.remove("hideMe");
     formSubz.classList.add("hideMe");
     subHeadDisp.classList.add("hideMe");
@@ -249,14 +244,11 @@ subButty.addEventListener("click", function(event) {
     userScore.classList.add("hideMe");
     arrayScore = trackedScore;
     initials = initialText.value;
-    
-    
     // array where I am storing values for user entry initials and high scores
     scoreStorageArray.push(
         {   userEntry: initials,
             highScore: trackedScore 
         } );
-    
 
     console.log(scoreStorageArray)
     for (var i = 0; i < scoreStorageArray.length; i++) {
@@ -267,22 +259,5 @@ subButty.addEventListener("click", function(event) {
         scoreList.appendChild(scoreLi);
         scoreSpan.textContent = scoreStorageArray.length
     }
-
-
     localStorage.setItem("infinityKey", JSON.stringify(scoreStorageArray));
-    
-    
 });
-      
-        //     for (var i = 0; i < scoreStorageArray.length; i++) {
-        //         var scoreStorageArray = scoreStorageArray[i];
-        
-        //         var scoreLi = document.createElement("li");
-        //         scoreLi.textContent = scoreStorageArray;
-        //         scoreLi.setAttribute("data-index", i);
-        
-        //         scoreList.appendChild(scoreLi);
-        //         }
-        //     }
-        // RENDER SCORE FUNCTION END
-        
