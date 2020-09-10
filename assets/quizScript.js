@@ -44,35 +44,35 @@ var scoreStorageArray = [];
 //********************************************************
 var gameArray = [
     {   page: 1,
-        question: "This is the content for the first page!!",
-        answer1: "a lot but wrong",
-        answer2: "very much but very wrong",
-        answer3: "what is wrong anyway?",
-        rightAnswer1: "just enough"
+        question: "What is an abbreviation for javascript?",
+        answer1: "MS DOS",
+        answer2: "super great internet language for masterminds",
+        answer3: "There is no abbreviation, only javascript",
+        rightAnswer1: "JS"
     },
     {
         page: 2,
-        question: "This is the content for the second page!!",
-        answer1: "answer wrong 1 -2nd page",
-        answer2: "answer wrong 2 - 2nd page",
-        answer3: "answer wrong 3 - 2nd page",
-        rightAnswer2: "answer right 1 - 2nd page"
+        question: "What is it called when you style page through javascript?",
+        answer1: "DOM manipulation",
+        answer2: "not having any hobbies",
+        answer3: "being a baby genius",
+        rightAnswer2: "dynamic styling"
     },
     {
         page: 3,
-        question: "This is the content for the third page!",
-        answer1: "answer wrong 1 - 3rd page",
-        answer2: "answer wrong 2 - 3rd page",
-        answer3: "answer wrong 3 - 3rd page",
-        rightAnswer3: "answer right 1 - 3rd"
+        question: "Where you link your javascript file in your HTML?",
+        answer1: "Anywhere you like in your HTML",
+        answer2: "trick question you link it in your CSS",
+        answer3: "in a <p> element",
+        rightAnswer3: "in the bottom of your body tag"
     },
     {
         page: 4,
-        question: "Are you a coder?",
-        answer1: "answer wrong 1 - 4th",
-        answer2: "answer wrong 2 - 4th",
-        answer3: "answer wrong 3 - 4th ",
-        rightAnswer4: "answer right 1 - 4th"
+        question: "What does console.log do?",
+        answer1: "It causes your program to crash",
+        answer2: "It creates a div called log",
+        answer3: "It creates a series of containers called console",
+        rightAnswer4: "It gives a coder the ability to check for errors"
     }
 ]
 // TIMER SETTING
